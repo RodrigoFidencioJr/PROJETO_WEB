@@ -33,10 +33,15 @@ Materiais e trabalhos realizados no segundo ano.
 #### 3º Ano
 Conteúdos e projetos do terceiro ano.
 
-📚 Cada disciplina pode conter:
-- Textos explicativos
-- Fotos
-- Vídeos relacionados às atividades
+## Como visualizar o projeto
+
+1. Baixe ou clone este repositório
+2. Abra a pasta do projeto
+3. Execute o arquivo:
+
+index.html
+
+em qualquer navegador.
 
 ## Tecnologias Utilizadas
 
