@@ -3,9 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerenciador de Tarefas To-Do</title>
+    <title>Gerenciador de Tarefas To-Do-List</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <div class="container">
+    <input id="tarefa" type="text" placeholder="Digite uma tarefa">
+    <button id="btn-adicionar" onclick="adicionarTarefa()">Adicionar</button>
+   
+   <ul id="lista"></ul>
+</div>
+
+<script> 
+    const lista = document.getElementById('lista')
+
+    function adicionarTarefa() {
+        var inputTarefa = document.getElementById('tarefa')
+        var texto = inputTarefa.value.trim()
+
+        if (texto != "") {
+            var novaTarefa = document.createElement('li')
+            var id = 'tarefa-' + Math.floor(Math.random() * 10000000)
+            novaTarefa.setAttribute('id', id)
+
+            // Nome da tarefa
+            var spanTexto = document.createElement('span')
+            spanTexto.innerHTML = texto
+            novaTarefa.appendChild(spanTexto)
+
+            // Botão Concluir
+            var concluirBtn = document.createElement('button')
+            concluirBtn.innerHTML = 'Concluir'
+            concluirBtn.setAttribute('onclick', `concluirTarefa('${id}')`)
+            novaTarefa.appendChild(concluirBtn)
+
+            // Botão Remover
+            var deleteBtn = document.createElement('button')
+            deleteBtn.setAttribute('onclick', `deletarTarefa('${id}')`)
+            deleteBtn.innerHTML = 'Remover'
+            novaTarefa.appendChild(deleteBtn)
+
+            lista.appendChild(novaTarefa)
+            inputTarefa.value = ''
+        }
+        else{
+            alert('Por favor, digite uma tarefa válida.')
+        }
+    }
+
+    function concluirTarefa(id) {
+        var elemento = document.getElementById(id)
+
+        // Verifica se já está concluída ou não
+        if (elemento.style.textDecoration === 'line-through') {
+            // Desfaz a conclusão
+            elemento.style.textDecoration = 'none'
+            elemento.style.backgroundColor = ''
+        } else {
+            // Marca como concluída
+            elemento.style.textDecoration = 'line-through'
+            elemento.style.backgroundColor = '#c8f7c5'
+        }
+    }
+
+    function deletarTarefa(id) {
+        var elemento = document.getElementById(id)
+        lista.removeChild(elemento)
+    } 
+</script>
 </body>
 </html>
