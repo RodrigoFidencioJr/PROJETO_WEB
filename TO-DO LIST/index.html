@@ -1,135 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerenciador de Tarefas To-Do-List</title>
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: Arial, sans-serif;
-    background-color: #3d1bff;
-}
-.container {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    text-align: center;
-    width: 300px;
-}
-input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-}
-button {
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    }
-ul {
-    list-style: none;
-    margin-top: 15px;
-}
-
-li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #eee;
-    padding: 8px;
-    margin-top: 5px;
-    border-radius: 5px;
-}
-.btn-delete {
-    background-color: red;
-    color: white;
-    padding: 5px 8px;
-    font-size: 12px;
-}
-.btn-delete:hover {
-    background-color: darkred;
-    }   
-</style>
-
-</head>
-<body>
-    <div class="container">
-    <input id="tarefa" type="text" placeholder="Digite uma tarefa">
-    <button id="btn-adicionar" onclick="adicionarTarefa()">Adicionar</button>
-   
-   <ul id="lista"></ul>
-</div>
-
-<script> 
-    const lista = document.getElementById('lista')
-
-    function adicionarTarefa() {
-        var inputTarefa = document.getElementById('tarefa')
-        var texto = inputTarefa.value.trim()
-
-        if (texto != "") {
-            var novaTarefa = document.createElement('li')
-            var id = 'tarefa-' + Math.floor(Math.random() * 10000000)
-            novaTarefa.setAttribute('id', id)
-
-            // Nome da tarefa
-            var spanTexto = document.createElement('span')
-            spanTexto.innerHTML = texto
-            novaTarefa.appendChild(spanTexto)
-
-            // Botão Concluir
-            var concluirBtn = document.createElement('button')
-            concluirBtn.innerHTML = 'Concluir'
-            concluirBtn.setAttribute('onclick', `concluirTarefa('${id}')`)
-            novaTarefa.appendChild(concluirBtn)
-
-            // Botão Remover
-            var deleteBtn = document.createElement('button')
-            deleteBtn.setAttribute('onclick', `deletarTarefa('${id}')`)
-            deleteBtn.innerHTML = 'Remover'
-            novaTarefa.appendChild(deleteBtn)
-
-            lista.appendChild(novaTarefa)
-            inputTarefa.value = ''
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Gerenciador de Tarefas To-Do-List</title>
+        <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        else{
-            alert('Por favor, digite uma tarefa válida.')
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            background-color: #3d1bff;
         }
-    }
-
-    function concluirTarefa(id) {
-        var elemento = document.getElementById(id)
-
-        // Verifica se já está concluída ou não
-        if (elemento.style.textDecoration === 'line-through') {
-            // Desfaz a conclusão
-            elemento.style.textDecoration = 'none'
-            elemento.style.backgroundColor = ''
-        } else {
-            // Marca como concluída
-            elemento.style.textDecoration = 'line-through'
-            elemento.style.backgroundColor = '#c8f7c5'
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 300px;
         }
-    }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            }
+        ul {
+            list-style: none;
+            margin-top: 15px;
+        }
 
-    function deletarTarefa(id) {
-        var elemento = document.getElementById(id)
-        lista.removeChild(elemento)
-    } 
-</script>
-</body>
+        li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #eee;
+            padding: 8px;
+            margin-top: 5px;
+            border-radius: 5px;
+        }
+        .btn-delete {
+            background-color: red;
+            color: white;
+            padding: 5px 8px;
+            font-size: 12px;
+        }
+        .btn-delete:hover {
+            background-color: darkred;
+            }   
+        </style>
+
+    </head>
+
+    <body>
+        <div class="container">
+            <input id="tarefa" type="text" placeholder="Digite uma tarefa">
+            <button id="btn-adicionar" onclick="adicionarTarefa()">Adicionar</button>
+            
+            <ul id="lista"></ul>
+        </div>
+
+        <script> 
+            const lista = document.getElementById('lista')
+
+            function adicionarTarefa() {
+                var inputTarefa = document.getElementById('tarefa')
+                var texto = inputTarefa.value.trim()
+
+                if (texto != "") {
+                    var novaTarefa = document.createElement('li')
+                    var id = 'tarefa-' + Math.floor(Math.random() * 10000000)
+                    novaTarefa.setAttribute('id', id)
+
+                    // Nome da tarefa
+                    var spanTexto = document.createElement('span')
+                    spanTexto.innerHTML = texto
+                    novaTarefa.appendChild(spanTexto)
+
+                    // Botão Concluir
+                    var concluirBtn = document.createElement('button')
+                    concluirBtn.innerHTML = 'Concluir'
+                    concluirBtn.setAttribute('onclick', `concluirTarefa('${id}')`)
+                    novaTarefa.appendChild(concluirBtn)
+
+                    // Botão Remover
+                    var deleteBtn = document.createElement('button')
+                    deleteBtn.setAttribute('onclick', `deletarTarefa('${id}')`)
+                    deleteBtn.innerHTML = 'Remover'
+                    novaTarefa.appendChild(deleteBtn)
+
+                    lista.appendChild(novaTarefa)
+                    inputTarefa.value = ''
+                }
+                else{
+                    alert('Por favor, digite uma tarefa válida.')
+                }
+            }
+
+            function concluirTarefa(tarefa) {
+                var elemento = document.getElementById(tarefa)
+                var texto = elemento.querySelector('span')
+
+                if (texto.style.textDecoration === 'line-through') {
+                texto.style.textDecoration = 'none'
+                elemento.style.backgroundColor = ''
+                } else {
+                texto.style.textDecoration = 'line-through'
+                elemento.style.backgroundColor = '#c8f7c5'
+                }
+}
+
+            function deletarTarefa(id) {
+                var elemento = document.getElementById(id)
+                lista.removeChild(elemento)
+            } 
+        </script>
+    </body>
 </html>
