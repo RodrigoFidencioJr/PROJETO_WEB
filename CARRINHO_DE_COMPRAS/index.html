@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sports Life</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>Sports Life 🏃</h1>
+  </header>
+
+  <main>
+
+    <!-- Filtro -->
+    <div id="filtro-container">
+      <label for="filtro">Filtrar por preço:</label>
+      <select id="filtro">
+        <option value="todos">Todos</option>
+        <option value="ate50">Até R$50</option>
+        <option value="acima50">Acima de R$50</option>
+      </select>
+    </div>
+
+    <div id="layout">
+
+      <!-- PRODUTOS -->
+      <section id="secao-produtos">
+        <h2>Produtos</h2>
+        <div id="produtos"></div>
+      </section>
+
+      <!-- CARRINHO -->
+      <section id="secao-carrinho">
+        <h2>🛒 Carrinho</h2>
+        <div id="carrinho">
+          <p id="carrinho-vazio">Carrinho vazio.</p>
+        </div>
+
+        <p id="total-container">
+          Total: R$ <span id="total">0,00</span>
+        </p>
+      </section>
+
+    </div>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
