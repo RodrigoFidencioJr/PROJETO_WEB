@@ -14,7 +14,7 @@
 
   <main>
 
-    <!-- Filtro -->
+    <!-- Filtro de produtos -->
     <div id="filtro-container">
       <label for="filtro">Filtrar por preço:</label>
       <select id="filtro">
@@ -26,22 +26,22 @@
 
     <div id="layout">
 
-      <!-- PRODUTOS -->
+      <!-- Lista de produtos (esquerda) -->
       <section id="secao-produtos">
         <h2>Produtos</h2>
         <div id="produtos"></div>
       </section>
 
-      <!-- CARRINHO -->
+      <!-- Carrinho (direita) -->
       <section id="secao-carrinho">
         <h2>🛒 Carrinho</h2>
         <div id="carrinho">
           <p id="carrinho-vazio">Carrinho vazio.</p>
         </div>
-
         <p id="total-container">
           Total: R$ <span id="total">0,00</span>
         </p>
+        <button id="btn-limpar" onclick="limparCarrinho()">🗑️ Limpar Carrinho</button>
       </section>
 
     </div>
