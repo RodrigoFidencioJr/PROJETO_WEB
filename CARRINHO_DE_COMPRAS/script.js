@@ -1,4 +1,3 @@
-// Lista de produtos
 const produtos = [
   { nome: "Camiseta Dry Fit", preco: 49.90, imagem: "imgs/camiseta_dryfit.jpg" },
   { nome: "Shorts Esportivo", preco: 39.90, imagem: "imgs/shorts_esportivo.jpg" },

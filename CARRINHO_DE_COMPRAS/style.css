@@ -1,4 +1,3 @@
-/* Reset geral: remove margens e padding padrão do navegador */
 * {
   margin: 0;
   padding: 0;
@@ -10,7 +9,6 @@ body {
   background-color: #f5f5f5;
 }
 
-/* ===== HEADER ===== */
 header {
   background-color: #111;
   color: white;
@@ -18,7 +16,6 @@ header {
   text-align: center;
 }
 
-/* ===== FILTRO ===== */
 #filtro-container {
   padding: 15px 20px;
   background: white;
@@ -35,30 +32,26 @@ header {
   cursor: pointer;
 }
 
-/* ===== LAYOUT PRINCIPAL: produtos à esquerda, carrinho à direita ===== */
 #layout {
   display: flex;
   gap: 20px;
   padding: 20px;
 }
 
-/* ===== SEÇÃO DE PRODUTOS ===== */
 #secao-produtos {
-  flex: 3; /* ocupa 3 partes do espaço */
+  flex: 3; 
 }
 
 #secao-produtos h2 {
   margin-bottom: 15px;
 }
 
-/* Grid de cards de produto */
 #produtos {
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
 }
 
-/* ===== CARD DE PRODUTO ===== */
 .produto {
   background: white;
   width: 180px;
@@ -107,9 +100,8 @@ header {
   background-color: #218838;
 }
 
-/* ===== SEÇÃO DO CARRINHO ===== */
 #secao-carrinho {
-  flex: 1; /* ocupa 1 parte do espaço */
+  flex: 1; 
   background: white;
   padding: 15px;
   border-radius: 12px;
@@ -121,7 +113,6 @@ header {
   margin-bottom: 15px;
 }
 
-/* ===== ITEM DO CARRINHO ===== */
 .item-carrinho {
   margin-bottom: 10px;
   border-bottom: 1px solid #eee;
@@ -149,21 +140,18 @@ header {
   background: #c82333;
 }
 
-/* ===== MENSAGEM CARRINHO VAZIO ===== */
 #carrinho-vazio {
   color: #aaa;
   font-style: italic;
   font-size: 0.9rem;
 }
 
-/* ===== TOTAL ===== */
 #total-container {
   font-weight: bold;
   margin-top: 12px;
   font-size: 1rem;
 }
 
-/* ===== BOTÃO LIMPAR ===== */
 #btn-limpar {
   margin-top: 10px;
   width: 100%;
