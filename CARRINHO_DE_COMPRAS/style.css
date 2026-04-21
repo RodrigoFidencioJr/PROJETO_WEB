@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, sans-serif;
+  font-family: 'Rubik', sans-serif;
 }
 
 body {
@@ -166,4 +166,19 @@ header {
 
 #btn-limpar:hover {
   background: #5a6268;
+}
+
+@media (max-width: 768px) {
+  #layout {
+    flex-direction: column;
+  }
+
+  #produtos {
+    justify-content: center;
+  }
+
+  .produto {
+    width: 100%;
+    max-width: 300px;
+  }
 }

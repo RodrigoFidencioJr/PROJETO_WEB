@@ -1,52 +1,40 @@
-# PROJETO_WEB
-# Site Pessoal
+# 💻 PROJETO_WEB
 
-Este projeto consiste na criação de um site pessoal. O objetivo é apresentar informações pessoais e também conteúdos relacionados à vida escolar ao longo dos anos.
+## 📚 Repositório de Atividades
 
-Estrutura do Site
+Este repositório reúne as atividades desenvolvidas na disciplina de **Programação Web** ao longo do curso.
+O objetivo é organizar e apresentar os projetos e aplicações criadas durante as aulas.
 
-O site é dividido em três partes principais:
+---
 
-###  Home
-Arquivo principal do site:
+## 🚀 Como visualizar os projetos
 
+1. Baixe ou clone este repositório:
+
+```bash
+git clone <link-do-repositorio>
+```
+
+2. Acesse a pasta do projeto desejado
+
+3. Abra o arquivo:
+
+```bash
 index.html
-
-Nesta página é feita a apresentação inicial do site e a navegação para as demais seções.
-
-###  Pessoal
-Nesta seção são apresentadas informações pessoais do aluno, incluindo:
-
-- Texto
-- Fotos
-- Vídeo
-
-###  Acadêmico
-Parte dedicada à vida escolar, organizada por ano.
-
-#### 1º Ano
-Conteúdos e atividades desenvolvidas no primeiro ano.
-
-#### 2º Ano
-Materiais e trabalhos realizados no segundo ano.
-
-#### 3º Ano
-Conteúdos e projetos do terceiro ano.
-
-## Como visualizar o projeto
-
-1. Baixe ou clone este repositório
-2. Abra a pasta do projeto
-3. Execute o arquivo:
-
-index.html
+```
 
 em qualquer navegador.
 
-## Tecnologias Utilizadas
+---
 
-- HTML
+## 🛠️ Tecnologias Utilizadas
 
-## Autor
+* HTML
+* CSS
+* JavaScript
+
+---
+
+## 👨‍💻 Autor
 
 Projeto desenvolvido por **Rodrigo Fidêncio Júnior**
