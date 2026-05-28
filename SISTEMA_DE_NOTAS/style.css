@@ -1,0 +1,616 @@
+/* ============================================================
+   IMPORTAÇÃO DE FONTES
+   DM Sans  → texto geral (labels, parágrafos, botões)
+   DM Mono  → números e valores de notas
+   Inter    → títulos e destaques
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap');
+
+/* ============================================================
+   RESET BÁSICO
+   Remove margens e paddings padrão do navegador.
+   box-sizing: border-box faz o padding ser incluído
+   na largura total do elemento (evita estouros de layout).
+   ============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ============================================================
+   VARIÁVEIS GLOBAIS (Custom Properties)
+   Centraliza todas as cores, fontes e tamanhos.
+   Para mudar a paleta inteira, basta alterar aqui.
+   ============================================================ */
+:root {
+  /* Cores de fundo */
+  --bg:        #f7f6f3;   /* fundo da página */
+  --surface:   #ffffff;   /* fundo dos cards */
+  --surface-2: #f0ede8;   /* fundo de campos e blocos internos */
+
+  /* Bordas */
+  --border:    #e4e0d8;   /* borda padrão */
+  --border-2:  #cbc6bb;   /* borda mais escura (hover) */
+
+  /* Texto */
+  --text:      #1a1814;   /* texto principal */
+  --text-2:    #6e6a60;   /* texto secundário (labels, subtítulos) */
+
+  /* Cor de destaque — azul petróleo */
+  --accent:    #1d5f8a;
+  --accent-bg: #e8f2f9;
+
+  /* Situações acadêmicas */
+  --green:     #196640;
+  --green-bg:  #e6f4ed;
+  --amber:     #7a5000;
+  --amber-bg:  #fdf4e3;
+  --red:       #952020;
+  --red-bg:    #fbe9e9;
+
+  /* Bordas arredondadas */
+  --radius-sm: 6px;
+  --radius:    10px;
+  --radius-lg: 16px;
+
+  /* Sombras */
+  --shadow: 0 1px 3px rgba(0,0,0,0.07), 0 2px 8px rgba(0,0,0,0.05);
+
+  /* Fontes */
+  --font-title: 'Inter', sans-serif;
+  --font-body:  'DM Sans', sans-serif;
+  --font-mono:  'DM Mono', 'Courier New', monospace;
+}
+
+/* ============================================================
+   BODY
+   Define fonte base, cor de fundo e suavização de texto.
+   ============================================================ */
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ============================================================
+   HEADER
+   Barra superior fixa com nome do sistema.
+   Usa flexbox para alinhar o ícone e o texto lado a lado.
+   Classes usadas no PHP: .header, .header-mark (SVG),
+   .header-text (h1 e p)
+   ============================================================ */
+.header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 18px 32px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* Quadrado que envolve o ícone SVG */
+.header-mark {
+  width: 36px;
+  height: 36px;
+  border: 2px solid var(--accent);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0; /* não encolhe em telas pequenas */
+}
+
+/* O SVG dentro do quadrado herda a cor do contorno */
+.header-mark svg {
+  width: 17px;
+  height: 17px;
+  stroke: var(--accent);
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Título principal no header */
+.header-text h1 {
+  font-family: var(--font-title);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+/* Subtítulo menor abaixo do h1 */
+.header-text p {
+  font-size: 12px;
+  color: var(--text-2);
+  margin-top: 2px;
+}
+
+/* ============================================================
+   CONTAINER
+   Centraliza o conteúdo e limita a largura máxima.
+   padding lateral garante espaço em telas pequenas.
+   ============================================================ */
+.container {
+  max-width: 840px;
+  margin: 36px auto;
+  padding: 0 20px;
+}
+
+/* ============================================================
+   CARD
+   Caixa branca que agrupa seções do formulário e relatório.
+   Classes usadas: .card, .card-title, .card-desc
+   ============================================================ */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  padding: 28px 30px;
+  margin-bottom: 16px;
+}
+
+.card-title {
+  font-family: var(--font-title);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.card-desc {
+  font-size: 13px;
+  color: var(--text-2);
+  margin-bottom: 22px;
+}
+
+/* ============================================================
+   FORMULÁRIO — LABELS E INPUTS
+   Labels em caixa alta pequena para visual de formulário
+   profissional. Inputs com borda e transição de foco.
+   ============================================================ */
+.form-group {
+  margin-bottom: 16px;
+}
+
+label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-2);
+  margin-bottom: 6px;
+}
+
+input[type="text"],
+input[type="number"] {
+  width: 100%;
+  padding: 10px 13px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--text);
+  background: var(--surface);
+  outline: none;
+  /* Transição suave ao focar */
+  transition: border-color 0.15s, box-shadow 0.15s;
+  /* Remove setas nativas do input number em alguns navegadores */
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+input[type="text"]:hover,
+input[type="number"]:hover {
+  border-color: var(--border-2);
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+  border-color: var(--accent);
+  /* Anel azul suave ao redor do campo focado */
+  box-shadow: 0 0 0 3px var(--accent-bg);
+}
+
+/* Inputs numéricos usam fonte mono para alinhar os dígitos */
+input[type="number"] {
+  font-family: var(--font-mono);
+  font-size: 14px;
+}
+
+input::placeholder {
+  color: var(--border-2);
+}
+
+/* ============================================================
+   GRIDS DE LAYOUT
+   .grid-turma → 2 colunas (nome da turma | quantidade)
+   .grid-3     → 3 colunas iguais (prova 1, prova 2, trabalho)
+   ============================================================ */
+.grid-turma {
+  display: grid;
+  grid-template-columns: 1fr 200px;
+  gap: 16px;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+/* ============================================================
+   BLOCO DE ALUNO
+   Gerado dinamicamente pelo JavaScript para cada aluno.
+   Classes usadas: .card.aluno-block, .aluno-header,
+   .aluno-num (círculo com número), .aluno-label
+   ============================================================ */
+.aluno-block {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px 22px;
+  margin-bottom: 12px;
+}
+
+/* Linha do topo do bloco com número e label */
+.aluno-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+/* Círculo com o número do aluno */
+.aluno-num {
+  width: 26px;
+  height: 26px;
+  border: 1.5px solid var(--accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+/* Texto "Aluno N" ao lado do círculo */
+.aluno-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* ============================================================
+   BOTÕES
+   .btn         → botão primário (azul, preenchido)
+   .btn-outline → botão secundário (transparente, com borda)
+   .btn-row     → container flex que alinha os botões
+   ============================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 22px;
+  background: var(--accent);
+  color: #fff;
+  border: 1.5px solid var(--accent);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  transition: background 0.15s, box-shadow 0.15s, transform 0.1s;
+}
+
+.btn:hover {
+  background: #154f78;
+  border-color: #154f78;
+  box-shadow: 0 4px 12px rgba(29,95,138,0.25);
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--text-2);
+  border-color: var(--border-2);
+}
+
+.btn-outline:hover {
+  background: var(--surface-2);
+  color: var(--text);
+  box-shadow: none;
+}
+
+.btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin-top: 24px;
+}
+
+/* ============================================================
+   BADGES DE SITUAÇÃO ACADÊMICA
+   Pílulas coloridas exibidas na coluna "Situação" da tabela.
+   Classes: .badge, .badge-aprovado, .badge-recuperacao,
+   .badge-reprovado
+   ============================================================ */
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.badge-aprovado    { background: var(--green-bg); color: var(--green); }
+.badge-recuperacao { background: var(--amber-bg); color: var(--amber); }
+.badge-reprovado   { background: var(--red-bg);   color: var(--red);   }
+
+/* ============================================================
+   TABELA DE RESULTADOS INDIVIDUAIS
+   .table-wrap → scroll horizontal em telas pequenas
+   table, thead th, tbody td → estilo das células
+   .mono → fonte de largura fixa para alinhar números
+   ============================================================ */
+.table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; /* scroll suave no iOS */
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+thead th {
+  text-align: left;
+  padding: 10px 14px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-2);
+  background: var(--surface-2);
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+tbody td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+
+/* Remove a borda da última linha para não duplicar com a borda do card */
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+tbody tr:hover {
+  background: var(--surface-2);
+}
+
+/* Fonte mono para colunas numéricas */
+.mono {
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+
+/* ============================================================
+   CARDS DE ESTATÍSTICAS DA TURMA
+   Grid automático que ajusta colunas conforme o espaço.
+   Classes: .stats-grid, .stat-card, .stat-label, .stat-value
+   Modificadores de cor: .v-accent, .v-green, .v-amber, .v-red
+   ============================================================ */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(148px, 1fr));
+  gap: 12px;
+}
+
+.stat-card {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  transition: border-color 0.15s;
+}
+
+.stat-card:hover {
+  border-color: var(--border-2);
+}
+
+.stat-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-2);
+  margin-bottom: 8px;
+}
+
+/* Número grande dentro do card */
+.stat-value {
+  font-family: var(--font-mono);
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+/* Modificadores de cor aplicados pelo PHP dinamicamente */
+.v-accent { color: var(--accent); }
+.v-green  { color: var(--green);  }
+.v-amber  { color: var(--amber);  }
+.v-red    { color: var(--red);    }
+
+/* ============================================================
+   MENSAGEM DE DESEMPENHO
+   Caixa colorida com borda lateral que resume o desempenho.
+   Classes: .msg-box + .excelente | .bom | .atencao | .critico
+   .msg-title → título em negrito dentro da caixa
+   ============================================================ */
+.msg-box {
+  border-radius: var(--radius-sm);
+  padding: 14px 18px;
+  margin-top: 20px;
+  font-size: 14px;
+  line-height: 1.55;
+  border-left: 4px solid;
+}
+
+.msg-box.excelente { background: var(--green-bg); color: var(--green); border-color: var(--green); }
+.msg-box.bom       { background: var(--accent-bg); color: var(--accent); border-color: var(--accent); }
+.msg-box.atencao   { background: var(--amber-bg); color: var(--amber); border-color: var(--amber); }
+.msg-box.critico   { background: var(--red-bg); color: var(--red); border-color: var(--red); }
+
+.msg-title {
+  font-weight: 700;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+
+/* ============================================================
+   LABEL DE SEÇÃO
+   Separador visual antes de blocos de conteúdo (tabela,
+   estatísticas). Classe: .section-label
+   ============================================================ */
+.section-label {
+  font-family: var(--font-title);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.01em;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ============================================================
+   RESPONSIVIDADE — TELAS MÉDIAS (até 640px)
+   Ajustes para tablets e celulares maiores:
+   - Grids viram coluna única
+   - Padding reduzido
+   - Botões em largura total
+   ============================================================ */
+@media (max-width: 640px) {
+  .header {
+    padding: 14px 18px;
+  }
+
+  .header-text h1 {
+    font-size: 14px;
+  }
+
+  .container {
+    margin: 20px auto;
+    padding: 0 14px;
+  }
+
+  .card {
+    padding: 20px 16px;
+    border-radius: var(--radius);
+  }
+
+  /* Grid turma vira coluna única (nome em cima, qtd embaixo) */
+  .grid-turma {
+    grid-template-columns: 1fr;
+  }
+
+  /* Grid de notas vira coluna única (uma nota por linha) */
+  .grid-3 {
+    grid-template-columns: 1fr;
+  }
+
+  /* Estatísticas em 2 colunas para aproveitar o espaço */
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stat-value {
+    font-size: 22px;
+  }
+
+  /* Botões empilhados e em largura total */
+  .btn-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  /* Tabela com células menores */
+  thead th,
+  tbody td {
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+}
+
+/* ============================================================
+   RESPONSIVIDADE — TELAS MUITO PEQUENAS (até 380px)
+   Celulares compactos: estatísticas em coluna única
+   ============================================================ */
+@media (max-width: 380px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================================
+   IMPRESSÃO
+   Remove elementos de navegação e simplifica o visual
+   para uma impressão limpa do relatório.
+   ============================================================ */
+@media print {
+  .btn-row {
+    display: none;
+  }
+
+  body {
+    background: white;
+    font-size: 13px;
+  }
+
+  .card {
+    box-shadow: none;
+    border: 1px solid #ccc;
+    break-inside: avoid;
+  }
+
+  .header {
+    border-bottom: 2px solid #ccc;
+  }
+}
