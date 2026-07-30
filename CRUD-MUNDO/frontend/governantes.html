@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Governantes - CRUD Mundo</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header>
+    <h1>CRUD Mundo</h1>
+    <nav>
+        <a href="index.html">Início</a>
+        <a href="continentes.html">Continentes</a>
+        <a href="paises.html">Países</a>
+        <a href="cidades.html">Cidades</a>
+        <a href="governantes.html" class="ativo">Governantes</a>
+    </nav>
+</header>
+
+<main>
+    <div id="mensagem" class="mensagem"></div>
+
+    <div class="cartao">
+        <h2 id="titulo-form">Novo governante</h2>
+        <form id="form-governante">
+            <div class="grade-formulario">
+                <input type="hidden" id="governante-id">
+                <div class="campo largo">
+                    <label for="governante-nome">Nome *</label>
+                    <input type="text" id="governante-nome" required>
+                </div>
+                <div class="campo">
+                    <label for="governante-partido">Partido político</label>
+                    <input type="text" id="governante-partido">
+                </div>
+                <div class="campo">
+                    <label for="governante-nascimento">Data de nascimento *</label>
+                    <input type="date" id="governante-nascimento" required>
+                </div>
+                <div class="campo">
+                    <label for="governante-inicio">Início do mandato *</label>
+                    <input type="date" id="governante-inicio" required>
+                </div>
+                <div class="campo">
+                    <label for="governante-fim">Fim do mandato</label>
+                    <input type="date" id="governante-fim">
+                </div>
+                <div class="acoes-formulario">
+                    <button type="submit" class="btn-primario">Salvar</button>
+                    <button type="button" id="btn-cancelar" class="btn-secundario">Cancelar edição</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="cartao">
+        <h2>Governantes cadastrados</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Partido</th>
+                    <th>Idade</th>
+                    <th>Mandato</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody id="tabela-governantes"></tbody>
+        </table>
+    </div>
+</main>
+
+<script src="js/api.js"></script>
+<script src="js/governantes.js"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CRUD Mundo</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header>
+    <h1>CRUD Mundo</h1>
+    <nav>
+        <a href="index.html" class="ativo">Início</a>
+        <a href="continentes.html">Continentes</a>
+        <a href="paises.html">Países</a>
+        <a href="cidades.html">Cidades</a>
+        <a href="governantes.html">Governantes</a>
+    </nav>
+</header>
+
+<main>
+    <div class="cartao">
+        <h2>Gerenciamento de dados geográficos</h2>
+        <p>Escolha uma entidade para cadastrar, editar ou excluir registros.</p>
+    </div>
+
+    <div class="painel-inicio">
+        <a href="continentes.html">
+            <div class="numero" id="total-continentes">-</div>
+            <div class="rotulo">Continentes cadastrados</div>
+        </a>
+        <a href="paises.html">
+            <div class="numero" id="total-paises">-</div>
+            <div class="rotulo">Países cadastrados</div>
+        </a>
+        <a href="cidades.html">
+            <div class="numero" id="total-cidades">-</div>
+            <div class="rotulo">Cidades cadastradas</div>
+        </a>
+        <a href="governantes.html">
+            <div class="numero" id="total-governantes">-</div>
+            <div class="rotulo">Governantes cadastrados</div>
+        </a>
+    </div>
+</main>
+
+<script src="js/api.js"></script>
+<script>
+async function carregarTotais() {
+    const [continentes, paises, cidades, governantes] = await Promise.all([
+        apiGet('continentes'),
+        apiGet('paises'),
+        apiGet('cidades'),
+        apiGet('governantes'),
+    ]);
+    document.getElementById('total-continentes').textContent = continentes.length;
+    document.getElementById('total-paises').textContent = paises.length;
+    document.getElementById('total-cidades').textContent = cidades.length;
+    document.getElementById('total-governantes').textContent = governantes.length;
+}
+carregarTotais();
+</script>
+</body>
+</html>

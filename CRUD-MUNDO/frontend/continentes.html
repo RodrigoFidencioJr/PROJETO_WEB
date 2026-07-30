@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Continentes - CRUD Mundo</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header>
+    <h1>CRUD Mundo</h1>
+    <nav>
+        <a href="index.html">Início</a>
+        <a href="continentes.html" class="ativo">Continentes</a>
+        <a href="paises.html">Países</a>
+        <a href="cidades.html">Cidades</a>
+        <a href="governantes.html">Governantes</a>
+    </nav>
+</header>
+
+<main>
+    <div id="mensagem" class="mensagem"></div>
+
+    <div class="cartao">
+        <h2 id="titulo-form">Novo continente</h2>
+        <form id="form-continente">
+            <div class="grade-formulario">
+                <input type="hidden" id="continente-id">
+                <div class="campo largo">
+                    <label for="continente-nome">Nome *</label>
+                    <input type="text" id="continente-nome" required>
+                </div>
+                <div class="campo">
+                    <label for="continente-populacao">População</label>
+                    <input type="number" id="continente-populacao" min="0">
+                </div>
+                <div class="campo">
+                    <label for="continente-area">Área (km²)</label>
+                    <input type="number" id="continente-area" min="0" step="0.01">
+                </div>
+                <div class="acoes-formulario">
+                    <button type="submit" class="btn-primario">Salvar</button>
+                    <button type="button" id="btn-cancelar" class="btn-secundario">Cancelar edição</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="cartao">
+        <h2>Continentes cadastrados</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>População</th>
+                    <th>Área</th>
+                    <th>Países</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody id="tabela-continentes"></tbody>
+        </table>
+    </div>
+</main>
+
+<script src="js/api.js"></script>
+<script src="js/continentes.js"></script>
+</body>
+</html>
