@@ -15,7 +15,6 @@ CREATE TABLE governantes (
     nome                VARCHAR(150) NOT NULL,
     partido_politico    VARCHAR(100),
     data_nascimento     DATE NOT NULL,
-    idade               INT UNSIGNED GENERATED ALWAYS AS (TIMESTAMPDIFF(YEAR, data_nascimento, CURDATE())) STORED,
     data_inicio_mandato DATE NOT NULL,
     data_fim_mandato    DATE NULL,
     CHECK (data_fim_mandato IS NULL OR data_fim_mandato >= data_inicio_mandato)
