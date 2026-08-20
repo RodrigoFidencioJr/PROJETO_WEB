@@ -99,3 +99,31 @@ INSERT INTO cidades (nome, pais_id, populacao, area_km2, clima, governante_id, d
 ('São Paulo', 1, 12300000, 1521.11, 'Tropical de Altitude', 3, '1554-01-25'),
 ('Paris', 2, 2148000, 105.40, 'Temperado Oceânico', NULL, '0508-01-01'),
 ('Tóquio', 3, 13960000, 2194.07, 'Subtropical Úmido', NULL, '1457-01-01');
+
+SET NAMES utf8mb4;
+
+CREATE TABLE usuarios (
+    username         VARCHAR(30) PRIMARY KEY,
+    senha            VARCHAR(128) NOT NULL,
+    nome             VARCHAR(80) NOT NULL,
+    status           CHAR(1) NOT NULL DEFAULT 'A',
+    tipo             CHAR(1) NOT NULL DEFAULT 'U',
+    qtde_acesso      INT NOT NULL DEFAULT 0,
+    primeiro_acesso  CHAR(1) NOT NULL DEFAULT 'S',
+    CHECK (status IN ('A', 'I', 'B')),
+    CHECK (tipo IN ('A', 'U')),
+    CHECK (primeiro_acesso IN ('S', 'N'))
+) ENGINE=InnoDB;
+
+CREATE TABLE logs (
+    id_log       INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    data_acesso  DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    descricao    VARCHAR(200) NULL,
+    username     VARCHAR(30) NOT NULL,
+    FOREIGN KEY (username) REFERENCES usuarios(username) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB;
+
+CREATE INDEX idx_logs_username ON logs(username);
+
+INSERT INTO usuarios (username, senha, nome, status, tipo, qtde_acesso, primeiro_acesso) VALUES
+('admin', '$2b$10$yQCBn/JkAx1GbIy/cBpQzO2Wu.J.wHAumGGzCMjoqoObeQ3sk3UWq', 'Administrador', 'A', 'A', 0, 'S');

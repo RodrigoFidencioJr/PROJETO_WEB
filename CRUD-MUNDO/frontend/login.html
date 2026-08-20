@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login - CRUD Mundo</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="pagina-login">
+<main class="container-login">
+    <div class="cartao cartao-login">
+        <h2>CRUD Mundo</h2>
+        <div id="mensagem" class="mensagem"></div>
+        <form id="form-login">
+            <div class="campo largo">
+                <label for="login-username">Username</label>
+                <input type="text" id="login-username" autocomplete="username" required>
+            </div>
+            <div class="campo largo">
+                <label for="login-senha">Senha</label>
+                <input type="password" id="login-senha" autocomplete="current-password" required>
+            </div>
+            <button type="submit" class="btn-primario btn-largo">OK</button>
+        </form>
+    </div>
+</main>
+
+<script src="js/api.js"></script>
+<script src="js/login.js"></script>
+</body>
+</html>
