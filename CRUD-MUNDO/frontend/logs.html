@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Logs de acesso - CRUD Mundo</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header>
+    <h1>CRUD Mundo</h1>
+    <nav>
+        <a href="index.html">Início</a>
+        <a href="continentes.html">Continentes</a>
+        <a href="paises.html">Países</a>
+        <a href="cidades.html">Cidades</a>
+        <a href="governantes.html">Governantes</a>
+        <a href="usuarios.html" class="somente-admin">Usuários</a>
+        <a href="logs.html" class="ativo somente-admin">Logs</a>
+    </nav>
+    <div class="area-usuario">
+        <span id="usuario-logado"></span>
+        <button id="btn-logout" class="btn-logout">Sair</button>
+    </div>
+</header>
+
+<main>
+    <div class="cartao">
+        <h2>Últimas tentativas de login</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Data/hora</th>
+                    <th>Usuário</th>
+                    <th>Descrição</th>
+                </tr>
+            </thead>
+            <tbody id="tabela-logs"></tbody>
+        </table>
+    </div>
+</main>
+
+<script src="js/api.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/logs.js"></script>
+</body>
+</html>
