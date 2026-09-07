@@ -1,4 +1,4 @@
-protegerPagina();
+protegerPagina({ paginaTrocaSenha: true });
 
 document.getElementById('form-trocar-senha').addEventListener('submit', async (evento) => {
     evento.preventDefault();
@@ -12,6 +12,11 @@ document.getElementById('form-trocar-senha').addEventListener('submit', async (e
         return;
     }
 
+    if (senhaNova === senhaAtual) {
+        mostrarMensagem('A nova senha deve ser diferente da senha atual.', 'erro');
+        return;
+    }
+
     if (senhaNova !== senhaConfirma) {
         mostrarMensagem('A confirmação não bate com a nova senha.', 'erro');
         return;
@@ -21,14 +26,19 @@ document.getElementById('form-trocar-senha').addEventListener('submit', async (e
         method: 'POST',
         credentials: 'include',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ senha_atual: senhaAtual, senha_nova: senhaNova }),
+        body: JSON.stringify({
+            senha_atual: senhaAtual,
+            senha_nova: senhaNova
+        }),
     });
+
     const dados = await resposta.json();
 
-    if (resposta.status >= 400) {
+    if (!resposta.ok) {
         mostrarMensagem(dados.erro || 'Não foi possível trocar a senha.', 'erro');
         return;
     }
 
-    window.location.href = 'index.html';
+    mostrarMensagem('Senha alterada com sucesso.', 'sucesso');
+    setTimeout(() => window.location.replace('index.html'), 600);
 });

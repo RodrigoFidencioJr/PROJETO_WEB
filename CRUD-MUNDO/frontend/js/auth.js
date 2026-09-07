@@ -1,21 +1,40 @@
 const AUTH_BASE = '../backend/sessao.php';
 
 async function verificarSessao() {
-    const resposta = await fetch(`${AUTH_BASE}?acao=me`, { credentials: 'include' });
-    if (resposta.status === 401) return null;
-    return resposta.json();
+    try {
+        const resposta = await fetch(`${AUTH_BASE}?acao=me`, {
+            credentials: 'include'
+        });
+
+        if (!resposta.ok) return null;
+        return await resposta.json();
+    } catch (erro) {
+        return null;
+    }
 }
 
-async function protegerPagina({ apenasAdmin = false } = {}) {
+async function protegerPagina({ apenasAdmin = false, paginaTrocaSenha = false } = {}) {
     const sessao = await verificarSessao();
 
     if (!sessao || !sessao.autenticado) {
-        window.location.href = 'login.html';
+        window.location.replace('login.html');
+        return null;
+    }
+
+    // Primeiro acesso: nenhuma página do sistema é liberada antes da troca.
+    if (sessao.primeiro_acesso && !paginaTrocaSenha) {
+        window.location.replace('trocar_senha.html');
+        return null;
+    }
+
+    // Se a troca obrigatória já foi concluída, não há motivo para permanecer nessa tela.
+    if (!sessao.primeiro_acesso && paginaTrocaSenha) {
+        window.location.replace('index.html');
         return null;
     }
 
     if (apenasAdmin && sessao.tipo !== 'A') {
-        window.location.href = 'index.html';
+        window.location.replace('index.html');
         return null;
     }
 
@@ -30,13 +49,18 @@ function montarNavUsuario(sessao) {
     }
 
     if (sessao.tipo !== 'A') {
-        document.querySelectorAll('.somente-admin').forEach(el => el.style.display = 'none');
+        document.querySelectorAll('.somente-admin').forEach(el => {
+            el.style.display = 'none';
+        });
     }
 }
 
 async function fazerLogout() {
-    await fetch(`${AUTH_BASE}?acao=logout`, { method: 'POST', credentials: 'include' });
-    window.location.href = 'login.html';
+    await fetch(`${AUTH_BASE}?acao=logout`, {
+        method: 'POST',
+        credentials: 'include'
+    });
+    window.location.replace('login.html');
 }
 
 document.addEventListener('DOMContentLoaded', () => {

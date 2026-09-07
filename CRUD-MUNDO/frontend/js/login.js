@@ -22,5 +22,5 @@ document.getElementById('form-login').addEventListener('submit', async (evento) 
         return;
     }
 
-    window.location.href = dados.primeiro_acesso ? 'trocar-senha.html' : 'index.html';
+    window.location.href = dados.primeiro_acesso ? 'trocar_senha.html' : 'index.html';
 });
