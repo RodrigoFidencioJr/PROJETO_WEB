@@ -15,7 +15,13 @@
         <a href="paises.html">Países</a>
         <a href="cidades.html">Cidades</a>
         <a href="governantes.html" class="ativo">Governantes</a>
+            <a href="usuarios.html" class="somente-admin">Usuários</a>
+        <a href="logs.html" class="somente-admin">Logs</a>
     </nav>
+    <div class="area-usuario">
+        <span id="usuario-logado"></span>
+        <button id="btn-logout" class="btn-logout">Sair</button>
+    </div>
 </header>
 
 <main>
@@ -72,6 +78,8 @@
 </main>
 
 <script src="js/api.js"></script>
+<script src="js/auth.js"></script>
+<script>protegerPagina();</script>
 <script src="js/governantes.js"></script>
 </body>
 </html>

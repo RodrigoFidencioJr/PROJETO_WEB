@@ -1,10 +1,14 @@
 <?php
-header('Content-Type: application/json; charset=utf8');
-header('Access-Control-Allow-Origin: *');
+require_once __DIR__ . '/Auth.php';
+require_once __DIR__ . '/database.php';
+
+header('Content-Type: application/json; charset=utf-8');
+header('Access-Control-Allow-Origin: ' . ($_SERVER['HTTP_ORIGIN'] ?? '*'));
+header('Access-Control-Allow-Credentials: true');
 header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE');
 header('Access-Control-Allow-Headers: Content-Type');
 
-require_once __DIR__ . '/../config/Database.php';
+exigirLogin();
 
 $db = (new Database())->connect();
 $metodo = $_SERVER['REQUEST_METHOD'];
