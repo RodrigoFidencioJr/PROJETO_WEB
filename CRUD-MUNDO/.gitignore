@@ -1,0 +1,19 @@
+# Configurações locais e informações sensíveis
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+
+# Arquivos do sistema operacional
+.DS_Store
+Thumbs.db
+
+# Configurações de editores/IDEs
+.vscode/
+.idea/
+
+# Arquivos temporários
+*.tmp
+*.temp
