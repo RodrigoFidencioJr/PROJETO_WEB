@@ -18,6 +18,7 @@ O **CRUD Mundo** é uma aplicação web que centraliza informações geográfica
 - Controle de sessão
 - Registro de ações na tabela de logs
 - Administração de usuários
+- Mapa incorporado do Google Maps com a localização da sede da ETEC Profª Ilza Nascimento Pintus
 
 ## 🛠️ Tecnologias utilizadas
 
