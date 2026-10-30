@@ -18,13 +18,14 @@ O **CRUD Mundo** é uma aplicação web que centraliza informações geográfica
 - Controle de sessão
 - Registro de ações na tabela de logs
 - Administração de usuários
-- Mapa incorporado do Google Maps com a localização da sede da ETEC Profª Ilza Nascimento Pintus
+- Mapa interativo da sede da ETEC Profª Ilza Nascimento Pintus com a Google Maps JavaScript API
 
 ## 🛠️ Tecnologias utilizadas
 
 - HTML5
 - CSS3
 - JavaScript
+- Google Maps JavaScript API
 - PHP
 - MySQL
 - Git
@@ -49,6 +50,9 @@ CRUD-MUNDO/
 ├── frontend/
 │   ├── css/
 │   ├── js/
+│   │   ├── maps-config.example.js
+│   │   ├── maps-config.js (local, não versionado)
+│   │   └── mapa.js
 │   ├── index.html
 │   ├── login.html
 │   ├── trocar_senha.html
@@ -88,6 +92,18 @@ As ações de autenticação e outros eventos relevantes são registradas na tab
 
 As configurações do banco de dados não ficam gravadas diretamente no código. Elas devem ser informadas em um arquivo local `.env`, que não é versionado pelo Git.
 
+A chave da Google Maps JavaScript API também deve ficar em um arquivo local `frontend/js/maps-config.js`, ignorado pelo Git. Não publique uma chave irrestrita em repositórios públicos.
+
+## 🗺️ Configuração do Google Maps
+
+1. Obtenha uma chave de demonstração ou uma chave de API válida no Google Maps Platform.
+2. Na pasta `frontend/js`, faça uma cópia de `maps-config.example.js` e renomeie a cópia para `maps-config.js`.
+3. Abra `maps-config.js` e substitua o texto `COLOQUE_SUA_CHAVE_AQUI` pela sua chave.
+4. Mantenha `maps-config.js` apenas localmente; esse arquivo está no `.gitignore` e não deve ser enviado ao GitHub.
+5. Abra o sistema pelo servidor local com conexão à internet.
+
+A chave de demonstração é destinada a testes e protótipos e possui recursos e cotas limitados. Para uso em produção, configure uma chave própria, restrinja-a à Google Maps JavaScript API e aos sites autorizados.
+
 ## ✅ Requisitos
 
 Para executar o projeto é necessário possuir:
@@ -95,7 +111,8 @@ Para executar o projeto é necessário possuir:
 - Servidor web com suporte a PHP, como XAMPP
 - PHP com extensão PDO MySQL habilitada
 - MySQL ou MariaDB compatível
-- Navegador web
+- Navegador web com acesso à internet
+- Chave configurada para a Google Maps JavaScript API
 - Git, caso deseje clonar o repositório
 
 ## 🚀 Como executar
@@ -118,17 +135,13 @@ git clone https://github.com/RodrigoFidencioJr/PROJETO_WEB.git
 
 5. Preencha o arquivo `.env` com as credenciais do seu banco de dados local.
 
-6. Importe o arquivo:
+6. Importe o arquivo `database/bd_mundo.sql` no MySQL.
 
-```text
-database/bd_mundo.sql
-```
+7. Configure a chave do Google Maps conforme a seção **Configuração do Google Maps**.
 
-no MySQL.
+8. Inicie o servidor web e o serviço do banco de dados.
 
-7. Inicie o servidor web e o serviço do banco de dados.
-
-8. Abra no navegador a página:
+9. Abra no navegador a página:
 
 ```text
 frontend/login.html
