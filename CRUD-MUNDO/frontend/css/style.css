@@ -187,6 +187,7 @@ td.acoes { display: flex; gap: 8px; }
     header { flex-direction: column; align-items: flex-start; }
     nav a { margin-left: 0; margin-right: 14px; }
 }
+
 .pagina-login {
     display: flex;
     align-items: center;
@@ -219,6 +220,7 @@ td.acoes { display: flex; gap: 8px; }
 .btn-largo {
     width: 100%;
 }
+
 .texto-apoio {
     color: #52606d;
     font-size: 13px;
@@ -226,7 +228,7 @@ td.acoes { display: flex; gap: 8px; }
     text-align: center;
 }
 
-/* Mapa da sede da ETEC na página inicial */
+/* Mapa interativo da sede da ETEC usando a Google Maps JavaScript API */
 .cartao-mapa h2 {
     font-size: 16px;
     margin-bottom: 12px;
@@ -246,11 +248,19 @@ td.acoes { display: flex; gap: 8px; }
     background: #e4e7eb;
 }
 
-.mapa-container iframe {
-    display: block;
+#map {
     width: 100%;
     height: 360px;
-    border: 0;
+}
+
+.mapa-status {
+    color: #52606d;
+    font-size: 13px;
+    margin-top: 10px;
+}
+
+.mapa-status:empty {
+    display: none;
 }
 
 .link-mapa {
@@ -267,7 +277,7 @@ td.acoes { display: flex; gap: 8px; }
 }
 
 @media (max-width: 640px) {
-    .mapa-container iframe {
+    #map {
         height: 280px;
     }
 }
